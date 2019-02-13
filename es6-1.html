@@ -1,0 +1,109 @@
+<script>
+const log = console.log;
+var a = 10;
+var a = 20;
+
+let b = 10;
+const c = ["A", "B", "C"];
+c.push("d");
+console.log(c);
+
+for(let i=1; i<10; i++) {
+  console.log(i);
+}
+
+var fn = function(x, y){
+  return x + y;
+}
+const fn2 = (x, y) => {
+  return x + y;
+}
+const fn3 = (x, y) => (x + y);
+log(fn3(2, 10));
+
+//String
+var str = "2019-02-11 12:33:34";
+log(str.substr(2, 8));
+
+var str = "Hello world";
+var chkStr = "He";
+log(str.startsWith(chkStr));
+log(str.endsWith(chkStr));
+log(str.includes(chkStr));
+
+// Class
+// ES5
+var Human = (function(){
+  function Human(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Human.prototype.getName = function() {
+    return this.name;
+  }
+  Human.prototype.setName = function(name) {
+    this.name = name;
+  }
+  return Human;
+}());
+var hong = new Human("홍길동", 25);
+hong.setName("홍길순");
+log(hong.getName());
+
+// ES6
+class Human2 {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  getName() {
+    return this.name;
+  }
+  setName(name) {
+    this.name = name;
+  }
+  showInfo() {
+    console.log(`${this.name}의 나이는 ${this.age}세 입니다.`);
+  }
+}
+var hong2 = new Human2("홍길동", 30);
+hong2.showInfo();
+
+//Object
+var name = "홍길동";
+var age = 25;
+var obj = {
+  name, //name: name
+  age
+};
+
+var json = {
+  datas :[
+    {
+      "name": "홍길동",
+      "age": 25,
+    },
+    {
+      "name": "홍길순",
+      "age": 30,
+    },
+    {
+      "name": "홍길만",
+      "age": 30,
+    }
+  ]
+};
+var [,,cc] = json.datas;
+log(cc);
+log(cc.name);
+
+// Set 객체
+var set = new Set();
+log(set);
+set.add('A');
+set.add('B');
+set.add('C');
+set.add('A');
+set.add('B');
+log(set, set.size);
+</script>
