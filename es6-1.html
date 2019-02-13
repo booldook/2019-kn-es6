@@ -21,6 +21,34 @@ const fn2 = (x, y) => {
 const fn3 = (x, y) => (x + y);
 log(fn3(2, 10));
 
+// ES5
+function sum(v1, v2) {
+  v2 = v2 || 100;
+  return v1 + v2;
+}
+log(sum(10, 20));
+log(sum(10));
+
+// ES6
+function sum2(v1=100, v2=200) {
+  return v1 + v2;
+}
+log(sum2(10, 20));
+log(sum2(10));
+
+function sum3(...v) {
+  var sum = 0;
+  for(var i=0; i<v.length; i++) {
+    sum += v[i];
+  }
+  return sum;
+}
+log(sum3(1,2,3,4,5,6,7,8,9,10));
+
+var pre = [1,2,3];
+var newPre = [1,2,3,4,...pre,7,8,9];
+log(newPre);
+
 //String
 var str = "2019-02-11 12:33:34";
 log(str.substr(2, 8));
@@ -93,8 +121,9 @@ var json = {
     }
   ]
 };
-var [,,cc] = json.datas;
-log(cc);
+let [,,cc] = json.datas;
+//let {name3, age3} = cc;
+//log(name3, age3);
 log(cc.name);
 
 // Set 객체
@@ -102,8 +131,41 @@ var set = new Set();
 log(set);
 set.add('A');
 set.add('B');
-set.add('C');
+set.add(()=>{});
 set.add('A');
 set.add('B');
 log(set, set.size);
+
+// WeakSet
+var set2 = new WeakSet();
+set2.add(()=>{});
+set2.add({});
+log(set2);
+
+// Map
+var map = new Map();
+map.set(0, "영");
+map.set('A', "String A");
+map.set('B', "String B");
+map.set(()=>{}, "String A");
+
+var arr = ['A', 'B', 'C'];
+var arrN = [1, 2, 3];
+//console.clear();
+Array.prototype.getMin = function(){};
+Array.prototype.getMax = function(){};
+for(var i in arr) {
+  log(i, arr[i]);
+}
+for(var [k, v] of map) {
+  log(k, v);
+}
+arr.forEach(function(k, v){
+  log(k, v);
+});
+var k = map.get('A');
+log(k);
+log(map.keys());
+log(map.values());
+log(map.has('A'));
 </script>
